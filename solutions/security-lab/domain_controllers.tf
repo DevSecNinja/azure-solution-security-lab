@@ -39,7 +39,7 @@ module "windowsservers" {
   vnet_subnet_id           = module.network.vnet_subnets[0]
   name_template_vm_windows = "$${vm_hostname}-vmw-$${host_number}"
 
-  data_sa_type = "PremiumSSD_LRS"
+  data_sa_type = "Premium_LRS"
   extra_disks = [
     {
       size = 50
