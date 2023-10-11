@@ -17,6 +17,9 @@ else
 	echo "Git config is not using gpgsign, proceeding..."
 fi
 
+# Merge on conflicts instead of rebase
+git config pull.rebase false
+
 # Install the Azure PowerShell module
 pwsh -Command 'Install-Module Az -Force -AcceptLicense'
 

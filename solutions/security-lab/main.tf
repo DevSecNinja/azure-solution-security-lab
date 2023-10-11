@@ -14,6 +14,11 @@ terraform {
       source  = "aztfmod/azurecaf"
       version = "2.0.0-preview3"
     }
+
+    random = {
+      source  = "hashicorp/random"
+      version = "3.5.1"
+    }
   }
 
   cloud {
@@ -38,4 +43,7 @@ locals {
     "owner.name"       = local.config.generic.org.owner.name
     "owner.email"      = local.config.generic.org.owner.email
   })
+
+  project_shortname = "seclab"
+  subnets           = ["172.16.20.0/24", "172.16.21.0/24"]
 }

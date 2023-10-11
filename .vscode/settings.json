@@ -10,6 +10,8 @@
 	"terminal.integrated.defaultProfile.linux": "zsh",
 	"terminal.integrated.cwd": "${workspaceFolder}",
 	"editor.formatOnType": true,
+	"git.followTagsWhenSync": true,
+	"git.postCommitCommand": "sync",
 	"files.trimTrailingWhitespace": true,
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 2000,

@@ -30,6 +30,6 @@ jobs:
     with:
       working-directory: ./solutions/security-lab
       use-oid-connect: true
-      run-terraform-plan: false
-      run-terraform-apply: false
+      run-terraform-plan: true
+      run-terraform-apply: true
     secrets: inherit
