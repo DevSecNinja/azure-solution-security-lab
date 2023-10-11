@@ -30,7 +30,9 @@ resource "azurecaf_name" "vm_dc" {
 }
 
 module "domain_controllers" {
-  source                   = "Azure/compute/azurerm"
+  source  = "Azure/compute/azurerm"
+  version = "5.3.0"
+
   resource_group_name      = azurerm_resource_group.rg_dc.name
   is_windows_image         = true
   vm_hostname              = azurecaf_name.vm_dc.name

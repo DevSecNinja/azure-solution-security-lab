@@ -32,7 +32,9 @@ resource "azurecaf_name" "vnet" {
 }
 
 module "network" {
-  source              = "Azure/network/azurerm"
+  source  = "Azure/network/azurerm"
+  version = "5.3.0"
+
   vnet_name           = azurecaf_name.vnet.result
   resource_group_name = azurerm_resource_group.rg_vnet.name
   address_spaces      = local.subnets
