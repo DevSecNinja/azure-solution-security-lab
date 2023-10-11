@@ -18,7 +18,7 @@ resource "azurerm_resource_group" "rg_dc" {
 
 
 #
-# Domain Controller
+# Domain Controllers
 #
 
 resource "azurecaf_name" "vm_dc" {
@@ -29,7 +29,7 @@ resource "azurecaf_name" "vm_dc" {
   clean_input   = true
 }
 
-module "windowsservers" {
+module "domain_controllers" {
   source                   = "Azure/compute/azurerm"
   resource_group_name      = azurerm_resource_group.rg_dc.name
   is_windows_image         = true
@@ -50,4 +50,22 @@ module "windowsservers" {
   depends_on           = [azurerm_resource_group.rg_dc]
   tracing_tags_enabled = true
   tags                 = local.tags
+}
+
+#
+# Shutdown Policy
+#
+
+resource "azurerm_dev_test_global_vm_shutdown_schedule" "vm_dc" {
+  count = length(module.domain_controllers.vm_ids)
+
+  virtual_machine_id = module.domain_controllers.vm_ids[count.index]
+  location           = azurerm_resource_group.rg_dc.location
+  enabled            = true
+
+  daily_recurrence_time = var.config.compute.virtualMachines.windowsServer.settings.shutdownPolicy.daily_recurrence_time
+  timezone              = var.config.compute.virtualMachines.windowsServer.settings.shutdownPolicy.timezone
+  notification_settings {
+    enabled = var.config.compute.virtualMachines.windowsServer.settings.shutdownPolicy.notificationEnabled
+  }
 }
