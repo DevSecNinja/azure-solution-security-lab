@@ -24,9 +24,18 @@ resource "azurerm_resource_group" "rg_vnet" {
 # This VNET setup is purely for demo purposes. In production, make sure to have separate VNETs and
 # use the VNET peering functionality to bring them together with a firewall in the middle.
 
+resource "azurecaf_name" "vnet" {
+  resource_type = "azurerm_virtual_network"
+  prefixes      = []
+  suffixes      = [local.project_shortname, "01"]
+  clean_input   = true
+}
+
 module "network" {
   source              = "Azure/network/azurerm"
+  vnet_name           = azurecaf_name.vnet.name
   resource_group_name = azurerm_resource_group.rg_vnet.name
+  address_spaces      = ["172.16.20.0/24", "172.16.21.0/24"]
   subnet_prefixes     = ["172.16.20.0/24", "172.16.21.0/24"]
   subnet_names        = ["tier-0", "tier-1"]
 
