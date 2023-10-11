@@ -33,4 +33,5 @@ module "network" {
   depends_on           = [azurerm_resource_group.rg_vnet]
   tracing_tags_enabled = true
   tags                 = local.tags
+  use_for_each         = true
 }
