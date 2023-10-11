@@ -4,7 +4,9 @@ This repository contains the code that I use to deploy my Security Lab environme
 
 ## 📌 Features
 
-T.B.D.
+**T.B.D.**
+
+- Domain Controller running on Windows Server
 
 ## 🔧 Usage
 
