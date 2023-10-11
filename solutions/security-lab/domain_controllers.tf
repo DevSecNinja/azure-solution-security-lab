@@ -61,11 +61,11 @@ resource "azurerm_dev_test_global_vm_shutdown_schedule" "vm_dc" {
 
   virtual_machine_id = module.domain_controllers.vm_ids[count.index]
   location           = azurerm_resource_group.rg_dc.location
-  enabled            = true
+  enabled            = "true"
 
-  daily_recurrence_time = var.config.compute.virtualMachines.windowsServer.settings.shutdownPolicy.daily_recurrence_time
-  timezone              = var.config.compute.virtualMachines.windowsServer.settings.shutdownPolicy.timezone
+  daily_recurrence_time = "2000"
+  timezone              = "W. Europe Standard Time"
   notification_settings {
-    enabled = var.config.compute.virtualMachines.windowsServer.settings.shutdownPolicy.notificationEnabled
+    enabled = false
   }
 }
