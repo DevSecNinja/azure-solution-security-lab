@@ -37,7 +37,7 @@ module "windowsservers" {
   admin_password           = random_password.vm_dc_password.result
   vm_os_simple             = "WindowsServer"
   vnet_subnet_id           = module.network.vnet_subnets[0]
-  name_template_vm_windows = "${vm_hostname}-vmwin-${host_number}"
+  name_template_vm_windows = "$${vm_hostname}-vmw-$${host_number}"
 
   data_sa_type = "PremiumSSD_LRS"
   extra_disks = [
