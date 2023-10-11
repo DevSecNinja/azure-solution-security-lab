@@ -35,8 +35,8 @@ module "network" {
   source              = "Azure/network/azurerm"
   vnet_name           = azurecaf_name.vnet.result
   resource_group_name = azurerm_resource_group.rg_vnet.name
-  address_spaces      = ["172.16.20.0/24", "172.16.21.0/24"]
-  subnet_prefixes     = ["172.16.20.0/24", "172.16.21.0/24"]
+  address_spaces      = local.subnets
+  subnet_prefixes     = local.subnets
   subnet_names        = ["tier-0", "tier-1"]
 
   depends_on           = [azurerm_resource_group.rg_vnet]

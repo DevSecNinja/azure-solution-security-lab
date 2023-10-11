@@ -45,4 +45,5 @@ locals {
   })
 
   project_shortname = "seclab"
+  subnets           = ["172.16.20.0/24", "172.16.21.0/24"]
 }
