@@ -30,5 +30,7 @@ module "network" {
   subnet_prefixes     = ["172.16.20.0/24", "172.16.21.0/24"]
   subnet_names        = ["tier-0", "tier-1"]
 
-  depends_on = [azurerm_resource_group.rg_vnet]
+  depends_on           = [azurerm_resource_group.rg_vnet]
+  tracing_tags_enabled = true
+  tags                 = local.tags
 }
