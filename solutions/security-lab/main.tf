@@ -38,4 +38,6 @@ locals {
     "owner.name"       = local.config.generic.org.owner.name
     "owner.email"      = local.config.generic.org.owner.email
   })
+
+  project_shortname = "seclab"
 }
