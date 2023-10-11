@@ -40,7 +40,9 @@ module "domain_controllers" {
   vnet_subnet_id           = module.network.vnet_subnets[0]
   name_template_vm_windows = "$${vm_hostname}-vmw-$${host_number}"
 
-  data_sa_type = "Premium_LRS"
+  delete_os_disk_on_termination    = true
+  delete_data_disks_on_termination = true
+  data_sa_type                     = "Premium_LRS"
   extra_disks = [
     {
       size = 50
