@@ -14,16 +14,6 @@ terraform {
       source  = "aztfmod/azurecaf"
       version = "2.0.0-preview3"
     }
-
-    time = {
-      source  = "hashicorp/time"
-      version = "0.9.1"
-    }
-
-    null = {
-      source  = "hashicorp/null"
-      version = "3.2.1"
-    }
   }
 
   cloud {
