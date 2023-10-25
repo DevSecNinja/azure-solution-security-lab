@@ -49,7 +49,7 @@ module "domain_controllers" {
   resource_group_name      = azurerm_resource_group.rg_dc.name
   is_windows_image         = true
   vm_hostname              = azurecaf_name.vm_dc.name
-  nb_public_ip             = 0 # Disable Public IP
+  admin_username           = local.config.compute.virtualMachines.windowsServer.settings.osProfile.adminUsername
   admin_password           = random_password.vm_dc_password.result
   vm_os_simple             = "WindowsServer"
   vnet_subnet_id           = module.network.vnet_subnets[0]

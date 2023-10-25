@@ -49,7 +49,7 @@ module "defender_for_endpoint_vms" {
   resource_group_name      = azurerm_resource_group.rg_vm_mde.name
   is_windows_image         = true
   vm_hostname              = azurecaf_name.vm_mde.name
-  nb_public_ip             = 1 # 0 to disable Public IP
+  admin_username           = local.config.compute.virtualMachines.windows.settings.osProfile.adminUsername
   admin_password           = random_password.vm_mde_password.result
   vm_os_offer              = "Windows-11"
   vm_os_publisher          = "MicrosoftWindowsDesktop"
