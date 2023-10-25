@@ -29,6 +29,19 @@ resource "azurecaf_name" "vm_dc" {
   clean_input   = true
 }
 
+resource "random_password" "vm_dc_password" {
+  length           = 24
+  special          = true
+  override_special = "!#$%&*-_=+:?"
+}
+
+resource "azurerm_key_vault_secret" "vm_dc_password" {
+  name         = "vm-dc-password"
+  value        = random_password.vm_dc_password.result
+  key_vault_id = azurerm_key_vault.generic_kv.id
+  content_type = "Virtual Machine ${azurecaf_name.vm_dc.name} Local Admin Password"
+}
+
 module "domain_controllers" {
   source  = "Azure/compute/azurerm"
   version = "5.3.0"

@@ -39,7 +39,7 @@ module "network" {
   resource_group_name = azurerm_resource_group.rg_vnet.name
   address_spaces      = local.subnets
   subnet_prefixes     = local.subnets
-  subnet_names        = ["tier-0", "tier-1"]
+  subnet_names        = ["tier-0", "tier-1", "tier-2"]
 
   depends_on           = [azurerm_resource_group.rg_vnet]
   tracing_tags_enabled = true
