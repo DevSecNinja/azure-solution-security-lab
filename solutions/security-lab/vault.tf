@@ -34,10 +34,15 @@ resource "azurerm_key_vault" "generic_kv" {
   location                   = azurerm_resource_group.rg_kv_generic.location
   tenant_id                  = local.config.generic.org.tenant_id
   soft_delete_retention_days = 14
-  purge_protection_enabled   = false
   tags                       = local.tags
 
   sku_name = "standard"
+
+  network_acls {
+    default_action = "Deny"
+    bypass         = "AzureServices"
+    ip_rules       = []
+  }
 
   access_policy {
     tenant_id = local.config.generic.org.tenant_id
