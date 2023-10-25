@@ -36,7 +36,7 @@ resource "random_password" "vm_dc_password" {
 }
 
 resource "azurerm_key_vault_secret" "vm_dc_password" {
-  name         = "vm_dc_password"
+  name         = "vm-dc-password"
   value        = random_password.vm_dc_password.result
   key_vault_id = azurerm_key_vault.generic_kv.id
   content_type = "Virtual Machine ${azurecaf_name.vm_dc.name} Local Admin Password"
