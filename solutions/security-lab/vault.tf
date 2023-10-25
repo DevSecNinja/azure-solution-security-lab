@@ -46,7 +46,7 @@ resource "azurerm_key_vault" "generic_kv" {
 
   access_policy {
     tenant_id = local.config.generic.org.tenant_id
-    object_id = "f8719d08-2e15-4aec-8a81-313c4fbdf6a5" # Terraform account used to deploy this lab
+    object_id = "16387a48-4460-410a-a7eb-07040ede67b2" # App ID of Terraform account used to deploy this lab
     secret_permissions = [
       "Get",
       "Set",
