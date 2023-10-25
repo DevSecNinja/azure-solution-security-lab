@@ -3,7 +3,7 @@
 #
 
 resource "azurecaf_name" "rg_kv_generic" {
-  name          = "kv_generic"
+  name          = "kv-generic"
   resource_type = "azurerm_resource_group"
   prefixes      = []
   suffixes      = [local.project_shortname, "01"]
@@ -24,7 +24,7 @@ resource "azurecaf_name" "generic_kv" {
   name          = "generic"
   resource_type = "azurerm_key_vault"
   prefixes      = []
-  suffixes      = [local.config.generic.org.root_id, "01"]
+  suffixes      = [local.project_shortname, "01"]
   clean_input   = true
 }
 
