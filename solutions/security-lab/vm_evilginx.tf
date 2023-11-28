@@ -114,7 +114,7 @@ resource "azurerm_virtual_machine_extension" "vm_script_extension" {
 
   settings = <<SETTINGS
  {
-  "commandToExecute": "apt-get update && apt-get install -y certbot && /bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)' && if [ ! -d /opt/evilginx ]; then git clone https://github.com/kgretzky/evilginx2 /opt/evilginx; fi"
+  "commandToExecute": "apt-get update && apt-get install -y git make certbot && /bin/bash -c ""$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"" && brew install go && if [ ! -d /opt/evilginx ]; then git clone https://github.com/kgretzky/evilginx2 /opt/evilginx; fi"
  }
 SETTINGS
 
@@ -127,7 +127,7 @@ SETTINGS
 
 resource "azurerm_network_security_rule" "https_evilginx" {
   name                        = "https_evilginx"
-  priority                    = 100
+  priority                    = 200
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
@@ -141,7 +141,7 @@ resource "azurerm_network_security_rule" "https_evilginx" {
 
 resource "azurerm_network_security_rule" "http_evilginx" {
   name                        = "http_evilginx"
-  priority                    = 101
+  priority                    = 201
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
