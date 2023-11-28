@@ -106,6 +106,7 @@ module "evilginx_network" {
   use_for_each = true
 
   resource_group_name = azurerm_resource_group.rg_vm_evilginx.name
+  address_spaces      = ["192.168.250/24"]
   subnet_prefixes     = ["192.168.250/24"]
   subnet_names        = ["primary"]
 
