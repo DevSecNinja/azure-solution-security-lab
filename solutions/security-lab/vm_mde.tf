@@ -47,14 +47,15 @@ module "defender_for_endpoint_vms" {
   version = "5.3.0"
 
   resource_group_name      = azurerm_resource_group.rg_vm_mde.name
-  is_windows_image         = true
   vm_hostname              = azurecaf_name.vm_mde.name
   admin_username           = local.config.compute.virtualMachines.windows.settings.osProfile.adminUsername
   admin_password           = random_password.vm_mde_password.result
+  vm_size                  = "Standard_B2ms"
   vm_os_offer              = "Windows-11"
   vm_os_publisher          = "MicrosoftWindowsDesktop"
   vm_os_sku                = "win11-22h2-ent"
   vm_os_version            = "latest"
+  is_windows_image         = true
   vnet_subnet_id           = module.network.vnet_subnets[2]
   name_template_vm_windows = "$${vm_hostname}-vmw-$${host_number}"
 

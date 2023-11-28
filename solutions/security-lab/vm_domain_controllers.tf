@@ -47,11 +47,12 @@ module "domain_controllers" {
   version = "5.3.0"
 
   resource_group_name      = azurerm_resource_group.rg_dc.name
-  is_windows_image         = true
   vm_hostname              = azurecaf_name.vm_dc.name
+  vm_size                  = "Standard_B2ms"
   admin_username           = local.config.compute.virtualMachines.windowsServer.settings.osProfile.adminUsername
   admin_password           = random_password.vm_dc_password.result
   vm_os_simple             = "WindowsServer"
+  is_windows_image         = true
   vnet_subnet_id           = module.network.vnet_subnets[0]
   name_template_vm_windows = "$${vm_hostname}-vmw-$${host_number}"
 
