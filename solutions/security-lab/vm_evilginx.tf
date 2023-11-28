@@ -123,12 +123,22 @@ SETTINGS
 # Network
 #
 
+resource "azurecaf_name" "rg_vnet_evilginx" {
+  name          = "evilginx"
+  resource_type = "azurerm_virtual_network"
+  prefixes      = []
+  suffixes      = [local.project_shortname, "01"]
+  clean_input   = true
+}
+
 module "evilginx_network" {
   source       = "Azure/network/azurerm"
   version      = "5.3.0"
   use_for_each = true
 
   resource_group_name = azurerm_resource_group.rg_vm_evilginx.name
+  vnet_name = azurecaf_name.rg_vnet_evilginx.result
+
   address_spaces      = ["192.168.250.0/24"]
   subnet_prefixes     = ["192.168.250.0/24"]
   subnet_names        = ["primary"]
