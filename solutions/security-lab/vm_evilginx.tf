@@ -57,7 +57,7 @@ module "evilginx_vms" {
   vnet_subnet_id         = module.evilginx_network.vnet_subnets[0]
   name_template_vm_linux = "$${vm_hostname}-vml-$${host_number}"
 
-  # enable_ssh_key = true # TODO: Raise bug on compute module for failing SSH keys in GH Actions
+  enable_ssh_key = false # TODO: Raise bug on compute module for failing SSH keys in GH Actions
   # ssh_key_values = ["ssh-rsa ..."] # TOOD: To implement SSH Public key with GitHub Data Source
 
   delete_os_disk_on_termination    = true
