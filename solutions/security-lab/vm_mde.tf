@@ -47,7 +47,6 @@ module "defender_for_endpoint_vms" {
   version = "5.3.0"
 
   resource_group_name      = azurerm_resource_group.rg_vm_mde.name
-  is_windows_image         = true
   vm_hostname              = azurecaf_name.vm_mde.name
   admin_username           = local.config.compute.virtualMachines.windows.settings.osProfile.adminUsername
   admin_password           = random_password.vm_mde_password.result

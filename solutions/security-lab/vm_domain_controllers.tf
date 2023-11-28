@@ -47,7 +47,6 @@ module "domain_controllers" {
   version = "5.3.0"
 
   resource_group_name      = azurerm_resource_group.rg_dc.name
-  is_windows_image         = true
   vm_hostname              = azurecaf_name.vm_dc.name
   admin_username           = local.config.compute.virtualMachines.windowsServer.settings.osProfile.adminUsername
   admin_password           = random_password.vm_dc_password.result
