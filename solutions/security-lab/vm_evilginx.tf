@@ -121,6 +121,38 @@ SETTINGS
 }
 
 #
+# NSG Customizations
+#
+
+resource "azurerm_network_security_rule" "https_evilginx" {
+  name                        = "https_evilginx"
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "443"
+  source_address_prefix       = "*"
+  destination_address_prefix  = module.evilginx_vms.network_interface_private_ip
+  resource_group_name         = azurerm_resource_group.rg_vm_evilginx.name
+  network_security_group_name = module.evilginx_vms.network_security_group_name
+}
+
+resource "azurerm_network_security_rule" "http_evilginx" {
+  name                        = "http_evilginx"
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "80"
+  source_address_prefix       = "*"
+  destination_address_prefix  = module.evilginx_vms.network_interface_private_ip
+  resource_group_name         = azurerm_resource_group.rg_vm_evilginx.name
+  network_security_group_name = module.evilginx_vms.network_security_group_name
+}
+
+#
 # Network
 #
 
