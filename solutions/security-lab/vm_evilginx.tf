@@ -65,6 +65,7 @@ module "evilginx_vms" {
   delete_os_disk_on_termination    = true
   delete_data_disks_on_termination = true
   data_sa_type                     = "Premium_LRS"
+  allocation_method                = "Static" # Public IP
 
   depends_on           = [azurerm_resource_group.rg_vm_evilginx]
   tracing_tags_enabled = true
