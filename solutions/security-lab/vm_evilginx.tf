@@ -114,7 +114,7 @@ resource "azurerm_virtual_machine_extension" "vm_script_extension" {
 
   settings = <<SETTINGS
  {
-  "commandToExecute": "apt-get update && apt-get install -y git make certbot && wget -q https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh -O /opt/install_brew.sh && bash /opt/install_brew.sh && brew install go && if [ ! -d /opt/evilginx ]; then git clone https://github.com/kgretzky/evilginx2 /opt/evilginx; fi"
+  "commandToExecute": "apt-get update && apt-get install -y git make certbot && wget -q https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh -O /opt/install_brew.sh && if [ ! -d /opt/evilginx ]; then git clone https://github.com/kgretzky/evilginx2 /opt/evilginx; fi"
  }
 SETTINGS
 
