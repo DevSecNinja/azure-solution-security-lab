@@ -112,7 +112,7 @@ resource "azurerm_virtual_machine_extension" "vm_script_extension" {
 
   settings = <<SETTINGS
  {
-  "commandToExecute": "apt-get update && apt-get install -y certbot && if [ ! -d /opt/evilginx ]; then git clone https://github.com/kgretzky/evilginx2 /opt/evilginx fi"
+  "commandToExecute": "apt-get update && apt-get install -y certbot && if [ ! -d /opt/evilginx ]; then git clone https://github.com/kgretzky/evilginx2 /opt/evilginx; fi"
  }
 SETTINGS
 
