@@ -159,5 +159,6 @@ module "evilginx_network" {
   subnet_prefixes = ["192.168.250.0/24"]
   subnet_names    = ["Default"]
 
-  depends_on = [azurerm_resource_group.rg_vm_evilginx]
+  depends_on           = [azurerm_resource_group.rg_vm_evilginx]
+  tracing_tags_enabled = true
 }
