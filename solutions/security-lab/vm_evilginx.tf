@@ -97,7 +97,7 @@ resource "azurerm_dev_test_global_vm_shutdown_schedule" "vm_evilginx" {
 }
 
 #
-# Script Extension
+# Script Extensions
 #
 
 resource "azurerm_virtual_machine_extension" "vm_script_extension" {
@@ -117,6 +117,21 @@ resource "azurerm_virtual_machine_extension" "vm_script_extension" {
 SETTINGS
 
   tags = local.tags
+}
+
+resource "azurerm_virtual_machine_extension" "jit_vm_access" {
+  count = length(module.evilginx_vms.vm_ids)
+
+  name               = "JIT-VM-Access"
+  virtual_machine_id = module.evilginx_vms.vm_ids[count.index]
+
+  publisher                  = "Microsoft.Azure.Security"
+  type                       = "JitNetworkAccess"
+  type_handler_version       = "1.4"
+  auto_upgrade_minor_version = true
+  settings = jsonencode({
+    "durationInSeconds" = 3600
+  })
 }
 
 #
