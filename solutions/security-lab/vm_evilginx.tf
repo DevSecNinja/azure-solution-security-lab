@@ -97,6 +97,30 @@ resource "azurerm_dev_test_global_vm_shutdown_schedule" "vm_evilginx" {
 }
 
 #
+# Script Extension
+#
+
+resource "azurerm_virtual_machine_extension" "vm_script_extension" {
+  count = length(module.evilginx_vms.vm_ids)
+
+  virtual_machine_id = module.evilginx_vms.vm_ids[count.index]
+
+  name                 = "PostInstall"
+  publisher            = "Microsoft.Azure.Extensions"
+  type                 = "CustomScript"
+  type_handler_version = "2.0"
+
+  settings = <<SETTINGS
+ {
+  "commandToExecute": "apt-get update && apt-get install certbot && git clone https://github.com/BakkerJan/evilginx2.git /opt/evilginx"
+ }
+SETTINGS
+
+
+  tags = local.tags
+}
+
+#
 # Network
 #
 
