@@ -46,16 +46,17 @@ module "evilginx_vms" {
   source  = "Azure/compute/azurerm"
   version = "5.3.0"
 
-  resource_group_name    = azurerm_resource_group.rg_vm_evilginx.name
-  vm_hostname            = azurecaf_name.vm_evilginx.name
-  admin_username         = local.config.compute.virtualMachines.linux.settings.osProfile.adminUsername
-  admin_password         = random_password.vm_evilginx_password.result
-  vm_os_offer            = "0001-com-ubuntu-server-jammy"
-  vm_os_publisher        = "Canonical"
-  vm_os_sku              = "22_04-lts"
-  vm_os_version          = "latest"
-  vnet_subnet_id         = module.evilginx_network.vnet_subnets[0]
-  name_template_vm_linux = "$${vm_hostname}-vml-$${host_number}"
+  resource_group_name            = azurerm_resource_group.rg_vm_evilginx.name
+  vm_hostname                    = azurecaf_name.vm_evilginx.name
+  admin_username                 = local.config.compute.virtualMachines.linux.settings.osProfile.adminUsername
+  admin_password                 = random_password.vm_evilginx_password.result
+  vm_os_offer                    = "0001-com-ubuntu-server-jammy"
+  vm_os_publisher                = "Canonical"
+  vm_os_sku                      = "22_04-lts"
+  vm_os_version                  = "latest"
+  vnet_subnet_id                 = module.evilginx_network.vnet_subnets[0]
+  name_template_vm_linux         = "$${vm_hostname}-vml-$${host_number}"
+  name_template_vm_linux_os_disk = "$${vm_hostname}-osdisk-$${host_number}"
 
   enable_ssh_key = false # TODO: Raise bug with compute TF module - ssh_key_values not working on GH Actions
   # ssh_key_values = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDrGDCRDUvdnPFL9TGgICVWz9+qV21IYDpwf9P5tg73n5H0ZhA5Tn9ogo9VdzSrDMaXZ2/Ca1PQDEtjb7Q/6NDC9XQbL0DOsi0wyQiTcJopdZnyH6jYVwWUhJ1hXeEsmD9eVTfXwCelPzJpJU2um/w0UR5EhX6nI1Mh7koLjEycmXQLTZtkZlnJttdI63ka7xeDZbQSwbpaGpZkFlFTahjc7OTw1416jL9Ld3Mu2VF0Sg+MpJS4jUiJB7DaSI2RTQZSnMXTQe/uPy9Fj8npg8ti0kjnM4jf9hYYudq8nznnfSvC8tY44RL42Kh+K/H79tyfMTwPIOuww1hytSkJg7EAMv/o7zAZYyiQzOWIxWqlMFr1+8/laIkVnm9bP9tLN4mHdq4SBQA7woj6VWSKrplN13sOIDFXit726SMxEPFma87c1vUYdrvcZvDz7dSeYVvlz8Fv/pwuz6/KMShCVAtutvyHAdOfEwUHX/x/Bh9Yp6dnn2BdgNHyCnSbFc/J4fy7SMbWoi3DViTxsx/xycVW/EuoAehWmyWUO0+p5RYgauEmnBSDqAt6tIGy25+7p7ZPfZRSzG+02vNt+lWgcUcMehmfxy+ROOqNwvslrsKWp3r3cYszMMDhzrgVrxmiNeHO+tlrZGvO6euv1kNLCxCbQy7A7WCyyry4fBT2UBVYOw=="] # TOOD: To replace hardcoded key with GitHub Data Source
