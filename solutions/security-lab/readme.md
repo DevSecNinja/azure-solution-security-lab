@@ -43,6 +43,7 @@ I'm using `terraform-docs` to update my documentation automatically:
 | [azurecaf_name.rg_vm_evilginx](https://registry.terraform.io/providers/aztfmod/azurecaf/2.0.0-preview3/docs/resources/name) | resource |
 | [azurecaf_name.rg_vm_mde](https://registry.terraform.io/providers/aztfmod/azurecaf/2.0.0-preview3/docs/resources/name) | resource |
 | [azurecaf_name.rg_vnet](https://registry.terraform.io/providers/aztfmod/azurecaf/2.0.0-preview3/docs/resources/name) | resource |
+| [azurecaf_name.rg_vnet_evilginx](https://registry.terraform.io/providers/aztfmod/azurecaf/2.0.0-preview3/docs/resources/name) | resource |
 | [azurecaf_name.vm_dc](https://registry.terraform.io/providers/aztfmod/azurecaf/2.0.0-preview3/docs/resources/name) | resource |
 | [azurecaf_name.vm_evilginx](https://registry.terraform.io/providers/aztfmod/azurecaf/2.0.0-preview3/docs/resources/name) | resource |
 | [azurecaf_name.vm_mde](https://registry.terraform.io/providers/aztfmod/azurecaf/2.0.0-preview3/docs/resources/name) | resource |
