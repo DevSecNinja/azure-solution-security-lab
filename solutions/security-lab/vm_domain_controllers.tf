@@ -51,6 +51,7 @@ module "domain_controllers" {
   admin_username           = local.config.compute.virtualMachines.windowsServer.settings.osProfile.adminUsername
   admin_password           = random_password.vm_dc_password.result
   vm_os_simple             = "WindowsServer"
+  is_windows_image         = true
   vnet_subnet_id           = module.network.vnet_subnets[0]
   name_template_vm_windows = "$${vm_hostname}-vmw-$${host_number}"
 

@@ -54,6 +54,7 @@ module "defender_for_endpoint_vms" {
   vm_os_publisher          = "MicrosoftWindowsDesktop"
   vm_os_sku                = "win11-22h2-ent"
   vm_os_version            = "latest"
+  is_windows_image         = true
   vnet_subnet_id           = module.network.vnet_subnets[2]
   name_template_vm_windows = "$${vm_hostname}-vmw-$${host_number}"
 
