@@ -50,6 +50,7 @@ module "defender_for_endpoint_vms" {
   vm_hostname              = azurecaf_name.vm_mde.name
   admin_username           = local.config.compute.virtualMachines.windows.settings.osProfile.adminUsername
   admin_password           = random_password.vm_mde_password.result
+  vm_size                  = "Standard_B2ms"
   vm_os_offer              = "Windows-11"
   vm_os_publisher          = "MicrosoftWindowsDesktop"
   vm_os_sku                = "win11-22h2-ent"

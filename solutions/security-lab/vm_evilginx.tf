@@ -50,6 +50,7 @@ module "evilginx_vms" {
   vm_hostname                    = azurecaf_name.vm_evilginx.name
   admin_username                 = local.config.compute.virtualMachines.linux.settings.osProfile.adminUsername
   admin_password                 = random_password.vm_evilginx_password.result
+  vm_size                        = "Standard_B2ms"
   vm_os_offer                    = "0001-com-ubuntu-server-jammy"
   vm_os_publisher                = "Canonical"
   vm_os_sku                      = "22_04-lts"
@@ -133,7 +134,7 @@ resource "azurerm_network_security_rule" "https_evilginx" {
   source_port_range           = "*"
   destination_port_range      = "443"
   source_address_prefix       = "*"
-  destination_address_prefix  = module.evilginx_vms.network_interface_private_ip
+  destination_address_prefix  = module.evilginx_vms.network_interface_private_ip[0]
   resource_group_name         = azurerm_resource_group.rg_vm_evilginx.name
   network_security_group_name = module.evilginx_vms.network_security_group_name
 }
@@ -147,7 +148,7 @@ resource "azurerm_network_security_rule" "http_evilginx" {
   source_port_range           = "*"
   destination_port_range      = "80"
   source_address_prefix       = "*"
-  destination_address_prefix  = module.evilginx_vms.network_interface_private_ip
+  destination_address_prefix  = module.evilginx_vms.network_interface_private_ip[0]
   resource_group_name         = azurerm_resource_group.rg_vm_evilginx.name
   network_security_group_name = module.evilginx_vms.network_security_group_name
 }

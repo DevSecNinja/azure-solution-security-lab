@@ -48,6 +48,7 @@ module "domain_controllers" {
 
   resource_group_name      = azurerm_resource_group.rg_dc.name
   vm_hostname              = azurecaf_name.vm_dc.name
+  vm_size                  = "Standard_B2ms"
   admin_username           = local.config.compute.virtualMachines.windowsServer.settings.osProfile.adminUsername
   admin_password           = random_password.vm_dc_password.result
   vm_os_simple             = "WindowsServer"
