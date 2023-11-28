@@ -59,6 +59,7 @@ I'm using `terraform-docs` to update my documentation automatically:
 | [azurerm_resource_group.rg_vm_evilginx](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
 | [azurerm_resource_group.rg_vm_mde](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
 | [azurerm_resource_group.rg_vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
+| [azurerm_virtual_machine_extension.vm_script_extension](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_machine_extension) | resource |
 | [random_password.vm_dc_password](https://registry.terraform.io/providers/hashicorp/random/3.5.1/docs/resources/password) | resource |
 | [random_password.vm_evilginx_password](https://registry.terraform.io/providers/hashicorp/random/3.5.1/docs/resources/password) | resource |
 | [random_password.vm_mde_password](https://registry.terraform.io/providers/hashicorp/random/3.5.1/docs/resources/password) | resource |
