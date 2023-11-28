@@ -137,11 +137,11 @@ module "evilginx_network" {
   use_for_each = true
 
   resource_group_name = azurerm_resource_group.rg_vm_evilginx.name
-  vnet_name = azurecaf_name.rg_vnet_evilginx.result
+  vnet_name           = azurecaf_name.rg_vnet_evilginx.result
 
-  address_spaces      = ["192.168.250.0/24"]
-  subnet_prefixes     = ["192.168.250.0/24"]
-  subnet_names        = ["primary"]
+  address_spaces  = ["192.168.250.0/24", "192.168.251.0/24"]
+  subnet_prefixes = ["192.168.250.0/24", "192.168.251.0/24"]
+  subnet_names    = ["Default", "AzureBastionSubnet"]
 
   depends_on = [azurerm_resource_group.rg_vm_evilginx]
 }
