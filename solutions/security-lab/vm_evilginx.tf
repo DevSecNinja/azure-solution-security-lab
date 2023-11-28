@@ -101,7 +101,10 @@ resource "azurerm_dev_test_global_vm_shutdown_schedule" "vm_evilginx" {
 #
 
 module "evilginx_network" {
-  source              = "Azure/network/azurerm"
+  source  = "Azure/network/azurerm"
+  version = "5.3.0"
+  use_for_each = true
+
   resource_group_name = azurerm_resource_group.rg_vm_evilginx.name
   subnet_prefixes     = ["192.168.250/24"]
   subnet_names        = ["primary"]
